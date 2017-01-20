@@ -1,0 +1,42 @@
+.main{
+  position: relative;
+  margin: 0 auto;
+  width: 300px;
+  overflow: hidden;
+  font-size: 0px;
+  .slide{
+    position: relative;
+    width:1000px;
+    left: -400px;
+    top: 0;
+    .slide-item{
+      display: inline-block;
+    }
+  }
+  img{
+    width:100px;
+  }
+}
+.ani{
+  width: 1000px;
+  margin: 0 auto;
+  background: red;
+  animation: fadeIn 3s ease-in;
+
+}
+p{
+  width: 400px;
+  border: solid red;
+  transform: translate(100px) translateY(100px) rotate(45deg);
+}
+@keyframes fadeIn {
+  0% {
+   width:1000px;
+ }
+ 50% {
+   width: 50px;
+ }
+ 100% {
+   width: 1000px;
+ }
+}
