@@ -1,6 +1,5 @@
 const path = require("path");
 const webpack = require("webpack");
-// const autoprefixer = require("autoprefixer");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require("autoprefixer");
 
@@ -27,7 +26,9 @@ module.exports = {
        {test: /\.scss$/,   loader: ExtractTextPlugin.extract({
             fallbackLoader:'style-loader',
             loader:'css-loader?-url!postcss-loader!sass-loader?'
-        })}
+        })},
+        {test: /\.js$/,
+          use: 'babel-loader'},
            ]
     },
     devtool: 'cheap-source-map',
