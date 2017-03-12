@@ -17,22 +17,45 @@ module.exports = {
         filename: '[name].min.js'
     },
     module: {
-      rules: [
-        {test: /\.css/,
-          loader: ExtractTextPlugin.extract({
-              fallbackLoader: 'style-loader',
-              loader: 'css-loader?-url'
-          })},
-       {test: /\.scss$/,   loader: ExtractTextPlugin.extract({
-            fallbackLoader:'style-loader',
-            loader:'css-loader?-url!postcss-loader!sass-loader?'
-        })},
-        {test: /\.js$/,
-          use: 'babel-loader'},
-           ]
+        // preLoaders: [{
+        //     test: /\.js$/,
+        //     exclude: /node_modules/,
+        //     loader: 'jshint-loader'
+        // }],
+        rules: [{
+                test: /\.css/,
+                // loader: ExtractTextPlugin.extract({
+                //     fallbackLoader:'style-loader',
+                //     use: 'css-loader?-url'
+                // })
+                use:["style-loader","css-loader"]
+            },
+            {
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract({
+                    fallback:'style-loader',
+                    use: 'css-loader?-url!postcss-loader!sass-loader?'
+                })
+            },
+            {
+                test: /\.js$/,
+                exclude:/node_modules/,
+                enforce:'pre',
+                use: 'jshint-loader'
+            },
+            {
+                test: /\.js$/,
+                use: 'babel-loader'
+            },
+        ]
     },
     devtool: 'cheap-source-map',
     plugins: [new ExtractTextPlugin('index.min.css'),
-    new webpack.LoaderOptionsPlugin({ options: { postcss: [ autoprefixer ] } }),],
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                postcss: [autoprefixer]
+            }
+        }),
+    ],
 };
 // server.watch(__dirname + '/dist');
