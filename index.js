@@ -1,4 +1,5 @@
 import './index.scss';
+import $ from 'jquery';
 
 $(function() {
     var slide = $(".main .slide");
@@ -9,4 +10,7 @@ $(function() {
     leftArray.forEach((item) => {
         console.log(item);
     });
+    if(true){
+        console.log(1);
+    }
 });

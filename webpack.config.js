@@ -41,7 +41,7 @@ module.exports = {
                 test: /\.js$/,
                 exclude:/node_modules/,
                 enforce:'pre',
-                use: 'jshint-loader'
+                use: 'eslint-loader'
             },
             {
                 test: /\.js$/,
